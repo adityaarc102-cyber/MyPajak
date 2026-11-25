@@ -1,0 +1,28 @@
+{
+  "name": "lokalverif-umkm",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "cert:generate": "node scripts/generate-https-cert.mjs",
+    "dev": "nuxt dev --host 0.0.0.0 --port 3001",
+    "dev:http": "nuxt dev --host 0.0.0.0 --port 3001 --takeover",
+    "dev:https": "node scripts/generate-https-cert.mjs && nuxt dev --host 0.0.0.0 --port 3001 --https --sslCert certs/dev-cert.pem --sslKey certs/dev-key.pem --takeover",
+    "dev:mobile": "nuxt dev --host 0.0.0.0 --port 3001 --takeover",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "typecheck": "nuxt typecheck"
+  },
+  "dependencies": {
+    "nuxt": "^4.0.0",
+    "vue": "^3.5.0",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.0",
+    "tailwindcss": "^4.1.0",
+    "typescript": "^5.8.0",
+    "vue-tsc": "^2.2.0"
+  }
+}

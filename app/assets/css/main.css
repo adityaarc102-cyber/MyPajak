@@ -1,0 +1,1239 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: #faf7f2;
+    color: #1f332b;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    color-scheme: light;
+    transition: background-color 220ms ease, color 220ms ease;
+  }
+
+  body {
+    background-color: #faf7f2;
+    background-image:
+      radial-gradient(circle at 12% 0%, rgba(47, 97, 74, 0.06), transparent 36%),
+      radial-gradient(circle at 88% 8%, rgba(240, 106, 71, 0.05), transparent 32%);
+    min-height: 100vh;
+    transition: background-color 220ms ease, color 220ms ease;
+  }
+
+  button,
+  a {
+    transition:
+      transform 220ms cubic-bezier(0.25, 0.8, 0.25, 1),
+      background-color 220ms ease,
+      border-color 220ms ease,
+      color 220ms ease,
+      box-shadow 240ms ease,
+      opacity 220ms ease;
+  }
+
+  button:not(:disabled):active,
+  a:active {
+    transform: scale(0.985);
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.logo-pill {
+  background-color: #ffffff !important;
+}
+
+.brochure-sheet,
+.lector-card {
+  background-color: #ffffff;
+  border: 1px solid #eae4d9;
+  box-shadow: 0 8px 28px -14px rgba(31, 81, 63, 0.1);
+}
+
+.card-interactive {
+  transition:
+    transform 280ms cubic-bezier(0.25, 0.8, 0.25, 1),
+    box-shadow 280ms ease,
+    border-color 240ms ease,
+    background-color 240ms ease;
+}
+
+.card-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px -16px rgba(31, 81, 63, 0.12);
+  border-color: #cfc5b4;
+}
+
+.hero-surface {
+  background:
+    radial-gradient(circle at 88% 18%, rgba(240, 106, 71, 0.22), transparent 42%),
+    radial-gradient(circle at 12% 100%, rgba(182, 217, 198, 0.14), transparent 46%),
+    linear-gradient(135deg, #164234 0%, #1f513f 56%, #2b634c 100%);
+}
+
+/* Sidebar melayang dengan tepi membulat dan gradasi hijau-teal hidup & elegan */
+.sidebar-teal-surface {
+  background:
+    radial-gradient(circle at 85% 6%, rgba(94, 234, 212, 0.28), transparent 44%),
+    radial-gradient(circle at 10% 94%, rgba(6, 78, 74, 0.42), transparent 50%),
+    linear-gradient(170deg, #149388 0%, #0f766e 44%, #0c5d57 78%, #124d43 100%);
+  background-size: 180% 180%;
+  animation: sidebar-aurora-flow 14s ease-in-out infinite alternate;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 20px 38px -18px rgba(10, 82, 77, 0.5);
+}
+
+@keyframes sidebar-aurora-flow {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 20% 100%;
+  }
+}
+
+/* Kartu Logo di puncak sidebar dengan kilau melintas halus & hover elastis */
+.sidebar-logo-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 260ms cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 260ms ease;
+}
+
+.sidebar-logo-card:hover {
+  transform: translateY(-1px) scale(1.025);
+  box-shadow: 0 12px 24px -10px rgba(4, 47, 46, 0.45);
+}
+
+.sidebar-logo-card:active {
+  transform: scale(0.96);
+}
+
+.sidebar-logo-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 25%, rgba(15, 118, 110, 0.16) 50%, transparent 75%);
+  transform: translateX(-130%);
+  animation: sidebar-logo-gloss 5.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes sidebar-logo-gloss {
+  0%,
+  72% {
+    transform: translateX(-130%);
+  }
+  100% {
+    transform: translateX(135%);
+  }
+}
+
+/* Menu Sidebar Interaktif: geser halus, ikon memantul, indikator cahaya, & kilau aktif */
+.sidebar-menu-item {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 220ms ease,
+    border-color 220ms ease,
+    color 200ms ease,
+    box-shadow 260ms ease !important;
+}
+
+.sidebar-menu-item::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 22%;
+  bottom: 22%;
+  width: 3.5px;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #a7f3d0 0%, #ffffff 55%, #5eead4 100%);
+  opacity: 0;
+  transform: scaleY(0.2);
+  transition: transform 240ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 220ms ease;
+}
+
+.sidebar-menu-item:hover {
+  transform: translateX(5px);
+  background-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 8px 18px -10px rgba(4, 47, 46, 0.6);
+}
+
+.sidebar-menu-item:hover::before {
+  opacity: 0.85;
+  transform: scaleY(0.85);
+}
+
+.sidebar-menu-item:active {
+  transform: translateX(2px) scale(0.96);
+}
+
+.sidebar-menu-item svg {
+  transition: transform 280ms cubic-bezier(0.34, 1.56, 0.64, 1), color 220ms ease, filter 220ms ease;
+}
+
+.sidebar-menu-item:hover svg {
+  transform: scale(1.18) rotate(-7deg);
+  color: #a7f3d0;
+  filter: drop-shadow(0 0 6px rgba(167, 243, 208, 0.55));
+}
+
+.sidebar-menu-active {
+  background: linear-gradient(100deg, rgba(255, 255, 255, 0.28) 0%, rgba(167, 243, 208, 0.16) 100%) !important;
+  border-color: rgba(255, 255, 255, 0.32) !important;
+  box-shadow:
+    0 10px 22px -12px rgba(4, 47, 46, 0.72),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  animation: sidebar-active-pop 380ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.sidebar-menu-active::before {
+  opacity: 1 !important;
+  transform: scaleY(1) !important;
+  box-shadow: 0 0 10px rgba(167, 243, 208, 0.9);
+}
+
+.sidebar-menu-active::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.32) 50%, transparent 80%);
+  transform: translateX(-120%);
+  animation: sidebar-active-sweep 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  pointer-events: none;
+}
+
+.sidebar-menu-active svg {
+  color: #ccfbf1;
+  filter: drop-shadow(0 0 6px rgba(94, 234, 212, 0.65));
+  animation: sidebar-icon-pop 420ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes sidebar-active-pop {
+  0% {
+    transform: scale(0.96) translateX(-4px);
+    opacity: 0.78;
+  }
+  65% {
+    transform: scale(1.015) translateX(2px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes sidebar-active-sweep {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(130%);
+  }
+}
+
+@keyframes sidebar-icon-pop {
+  0% {
+    transform: scale(0.75) rotate(-14deg);
+  }
+  60% {
+    transform: scale(1.22) rotate(6deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Titik hijau hidup di kartu identitas admin sidebar */
+.sidebar-live-dot {
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background-color: #6ee7b7;
+  box-shadow: 0 0 8px rgba(110, 231, 183, 0.9);
+}
+
+.sidebar-live-dot::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(110, 231, 183, 0.75);
+  animation: sidebar-dot-pulse 1.9s ease-out infinite;
+}
+
+@keyframes sidebar-dot-pulse {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+.fade-up {
+  animation: fade-up-in 420ms cubic-bezier(0.25, 0.8, 0.25, 1) both;
+}
+
+@keyframes fade-up-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Efek fade lembut untuk overlay (digunakan pada overlay selamat datang Login) */
+.overlay-fade-enter-active,
+.overlay-fade-leave-active {
+  transition: opacity 280ms ease;
+}
+
+.overlay-fade-enter-from,
+.overlay-fade-leave-to {
+  opacity: 0;
+}
+
+/* Navigasi menu navbar langsung muncul instan tanpa animasi */
+.nav-instant,
+.nav-instant:active {
+  transition: none !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+/* Animasi geser halus untuk drawer sidebar kiri di HP */
+[role="dialog"] > aside {
+  animation: drawer-slide-in 280ms cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+@keyframes drawer-slide-in {
+  from {
+    opacity: 0.75;
+    transform: translateX(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animasi lembut khusus halaman Login */
+.login-logo-float {
+  animation: login-float 4.2s ease-in-out infinite;
+}
+
+@keyframes login-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.login-welcome-card {
+  animation: login-welcome-in 420ms cubic-bezier(0.25, 0.8, 0.25, 1) both;
+}
+
+@keyframes login-welcome-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.login-progress-fill {
+  animation: login-progress 680ms cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+@keyframes login-progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.login-ring-soft {
+  animation: login-ring-pulse 1.6s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+}
+
+.login-ring-soft-delay {
+  animation: login-ring-pulse 1.9s cubic-bezier(0.25, 0.8, 0.25, 1) 0.35s infinite;
+}
+
+/* Latar belakang gradasi hidup untuk halaman Login & Registrasi Admin (Hijau Teal & Forest) */
+.login-aurora-bg {
+  background:
+    radial-gradient(circle at 14% 18%, rgba(15, 118, 110, 0.15), transparent 44%),
+    radial-gradient(circle at 86% 16%, rgba(43, 99, 76, 0.15), transparent 44%),
+    radial-gradient(circle at 75% 88%, rgba(240, 106, 71, 0.1), transparent 40%),
+    linear-gradient(135deg, #faf7f2 0%, #eff7f3 52%, #e8f3ee 100%);
+  background-size: 160% 160%;
+  animation: aurora-shift 14s ease-in-out infinite alternate;
+}
+
+html.dark .login-aurora-bg {
+  background:
+    radial-gradient(circle at 14% 18%, rgba(15, 118, 110, 0.28), transparent 45%),
+    radial-gradient(circle at 86% 16%, rgba(31, 81, 63, 0.3), transparent 46%),
+    radial-gradient(circle at 75% 88%, rgba(240, 106, 71, 0.15), transparent 42%),
+    linear-gradient(135deg, #091410 0%, #0d1f18 52%, #0e221b 100%);
+  background-size: 160% 160%;
+}
+
+@keyframes aurora-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 45%;
+  }
+  100% {
+    background-position: 20% 80%;
+  }
+}
+
+/* Panel kiri Login dengan gradasi Hijau Teal & Forest yang mengalir halus */
+.login-brand-admin-alive {
+  background:
+    radial-gradient(circle at 85% 12%, rgba(94, 234, 212, 0.32), transparent 44%),
+    radial-gradient(circle at 12% 88%, rgba(167, 243, 208, 0.22), transparent 46%),
+    linear-gradient(135deg, #138a80 0%, #0f766e 38%, #1f513f 72%, #164234 100%);
+  background-size: 240% 240%;
+  animation: brand-gradient-flow 11s ease-in-out infinite alternate;
+}
+
+@keyframes brand-gradient-flow {
+  0% {
+    background-position: 0% 25%;
+  }
+  50% {
+    background-position: 100% 75%;
+  }
+  100% {
+    background-position: 25% 100%;
+  }
+}
+
+/* Tombol Masuk dengan gradasi Hijau Teal bergerak & kilau halus */
+.login-btn-gradient {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(95deg, #0f766e 0%, #1f513f 50%, #138a80 100%);
+  background-size: 200% 100%;
+  transition: background-position 420ms ease, transform 180ms ease, box-shadow 260ms ease;
+}
+
+.login-btn-gradient:hover:not(:disabled) {
+  background-position: 100% 0%;
+  box-shadow: 0 12px 26px -10px rgba(15, 118, 110, 0.55);
+}
+
+.login-btn-gradient::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 25%, rgba(255, 255, 255, 0.26) 50%, transparent 75%);
+  transform: translateX(-120%);
+  animation: btn-sheen 4.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes btn-sheen {
+  0%,
+  65% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(130%);
+  }
+}
+
+/* Bola cahaya dekoratif lembut bernuansa hijau di belakang kartu Login */
+.login-bg-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(56px);
+  pointer-events: none;
+  opacity: 0.55;
+  animation: orb-drift 10s ease-in-out infinite alternate;
+}
+
+.login-bg-orb-a {
+  width: 22rem;
+  height: 22rem;
+  top: -5rem;
+  left: -4rem;
+  background: radial-gradient(circle, rgba(94, 234, 212, 0.42), rgba(15, 118, 110, 0.08) 70%);
+}
+
+.login-bg-orb-b {
+  width: 24rem;
+  height: 24rem;
+  bottom: -6rem;
+  right: -4rem;
+  background: radial-gradient(circle, rgba(52, 211, 153, 0.36), rgba(31, 81, 63, 0.08) 70%);
+  animation-delay: -3.5s;
+}
+
+.login-bg-orb-c {
+  width: 16rem;
+  height: 16rem;
+  top: 42%;
+  right: 18%;
+  background: radial-gradient(circle, rgba(240, 106, 71, 0.2), transparent 70%);
+  animation-delay: -6s;
+}
+
+/* Tirai Transisi Gradasi Sinematik: Login -> Beranda (Hijau Forest & Teal) */
+.entry-curtain-aurora {
+  background:
+    radial-gradient(circle at 20% 25%, rgba(94, 234, 212, 0.4), transparent 46%),
+    radial-gradient(circle at 82% 20%, rgba(110, 231, 183, 0.34), transparent 48%),
+    radial-gradient(circle at 74% 85%, rgba(240, 106, 71, 0.28), transparent 46%),
+    linear-gradient(135deg, #0b3b38 0%, #0f766e 34%, #1f513f 68%, #164234 100%);
+  background-size: 220% 220%;
+  animation: brand-gradient-flow 4.5s ease-in-out infinite alternate;
+}
+
+.entry-curtain--entering {
+  animation:
+    curtain-circle-expand 520ms cubic-bezier(0.22, 1, 0.36, 1) forwards,
+    brand-gradient-flow 4.5s ease-in-out infinite alternate;
+}
+
+.entry-curtain--revealing {
+  animation: curtain-lift-reveal 660ms cubic-bezier(0.65, 0, 0.25, 1) forwards;
+}
+
+@keyframes curtain-circle-expand {
+  0% {
+    clip-path: circle(0% at 50% 50%);
+    opacity: 0.7;
+  }
+  100% {
+    clip-path: circle(150% at 50% 50%);
+    opacity: 1;
+  }
+}
+
+@keyframes curtain-lift-reveal {
+  0% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.95;
+  }
+  100% {
+    transform: translateY(-102%);
+    opacity: 0;
+  }
+}
+
+.entry-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(64px);
+  pointer-events: none;
+  animation: orb-drift 6s ease-in-out infinite alternate;
+}
+
+.entry-orb-1 {
+  width: 24rem;
+  height: 24rem;
+  top: -6rem;
+  left: 8%;
+  background: rgba(94, 234, 212, 0.4);
+}
+
+.entry-orb-2 {
+  width: 26rem;
+  height: 26rem;
+  bottom: -7rem;
+  right: 8%;
+  background: rgba(52, 211, 153, 0.38);
+  animation-delay: -2s;
+}
+
+.entry-orb-3 {
+  width: 18rem;
+  height: 18rem;
+  bottom: 12%;
+  left: 22%;
+  background: rgba(240, 106, 71, 0.3);
+  animation-delay: -4s;
+}
+
+@keyframes orb-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(26px, -22px, 0) scale(1.1);
+  }
+}
+
+.entry-shimmer-bar {
+  background: linear-gradient(90deg, #5eead4 0%, #6ee7b7 45%, #f06a47 80%, #a7f3d0 100%);
+  background-size: 200% 100%;
+  animation:
+    login-progress 880ms cubic-bezier(0.22, 1, 0.36, 1) forwards,
+    shimmer-slide 1.2s linear infinite;
+}
+
+@keyframes shimmer-slide {
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 200% 0%;
+  }
+}
+
+@keyframes login-ring-pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.45;
+  }
+  70% {
+    transform: scale(1.12);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.12);
+    opacity: 0;
+  }
+}
+
+.login-shake {
+  animation: login-shake-x 320ms ease-in-out;
+}
+
+/* Gradien warna panel Login saat berpindah antara Pengguna (Teal) dan Admin (Biru Royal) */
+.login-brand-user {
+  background:
+    radial-gradient(circle at 85% 10%, rgba(94, 234, 212, 0.24), transparent 45%),
+    radial-gradient(circle at 12% 92%, rgba(6, 78, 74, 0.35), transparent 50%),
+    linear-gradient(155deg, #138a80 0%, #0f766e 52%, #0c5d57 100%);
+}
+
+.login-brand-admin {
+  background:
+    radial-gradient(circle at 85% 10%, rgba(125, 211, 252, 0.26), transparent 45%),
+    radial-gradient(circle at 12% 92%, rgba(30, 58, 138, 0.4), transparent 50%),
+    linear-gradient(155deg, #2563eb 0%, #1d4ed8 52%, #172554 100%);
+}
+
+/* Animasi geser halus konten saat pindah peran Pengguna <-> Admin */
+.slide-role-left-enter-active,
+.slide-role-left-leave-active,
+.slide-role-right-enter-active,
+.slide-role-right-leave-active {
+  transition:
+    opacity 280ms cubic-bezier(0.25, 0.8, 0.25, 1),
+    transform 320ms cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.slide-role-left-enter-from {
+  opacity: 0;
+  transform: translateX(-18px);
+}
+.slide-role-left-leave-to {
+  opacity: 0;
+  transform: translateX(18px);
+}
+
+.slide-role-right-enter-from {
+  opacity: 0;
+  transform: translateX(18px);
+}
+.slide-role-right-leave-to {
+  opacity: 0;
+  transform: translateX(-18px);
+}
+
+@keyframes login-shake-x {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-3px);
+  }
+}
+
+/* Scrollbar halus sesuai tema */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f4efe5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cfc6b6;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2f614a;
+}
+
+/* Efek gelombang 3-lapis + kilau cahaya + pantulan pegas + percikan sentuh saat ditekan */
+.click-ripple,
+.click-wave-ring,
+.click-sheen {
+  position: absolute;
+  pointer-events: none;
+  z-index: 20;
+  will-change: transform, opacity;
+}
+
+.click-ripple,
+.click-wave-ring {
+  border-radius: 9999px;
+}
+
+.click-ripple {
+  transform: scale(0);
+  animation: click-wave-core 640ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.click-ripple--light {
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.52) 0%,
+    rgba(167, 243, 208, 0.34) 40%,
+    rgba(240, 106, 71, 0.14) 62%,
+    rgba(94, 234, 212, 0) 76%
+  );
+}
+
+.click-ripple--teal {
+  background: radial-gradient(
+    circle,
+    rgba(15, 118, 110, 0.32) 0%,
+    rgba(45, 212, 191, 0.22) 42%,
+    rgba(240, 106, 71, 0.12) 64%,
+    rgba(15, 118, 110, 0) 78%
+  );
+}
+
+html.dark .click-ripple--teal {
+  background: radial-gradient(
+    circle,
+    rgba(94, 234, 212, 0.34) 0%,
+    rgba(52, 211, 153, 0.22) 42%,
+    rgba(240, 106, 71, 0.14) 64%,
+    rgba(94, 234, 212, 0) 78%
+  );
+}
+
+.click-wave-ring {
+  transform: scale(0.06);
+  opacity: 0;
+  animation: click-wave-ring-expand 680ms cubic-bezier(0.16, 1, 0.3, 1) 50ms forwards;
+}
+
+.click-wave-ring--second {
+  animation: click-wave-ring-expand 760ms cubic-bezier(0.16, 1, 0.3, 1) 150ms forwards;
+}
+
+.click-wave-ring--light {
+  border: 2px solid rgba(255, 255, 255, 0.68);
+  box-shadow: 0 0 16px rgba(167, 243, 208, 0.5);
+}
+
+.click-wave-ring--teal {
+  border: 2px solid rgba(15, 118, 110, 0.48);
+  box-shadow: 0 0 14px rgba(45, 212, 191, 0.32);
+}
+
+html.dark .click-wave-ring--teal {
+  border: 2px solid rgba(94, 234, 212, 0.52);
+  box-shadow: 0 0 16px rgba(94, 234, 212, 0.32);
+}
+
+.click-sheen {
+  inset: 0;
+  border-radius: inherit;
+  transform: translateX(-115%) skewX(-18deg);
+  animation: click-sheen-sweep 520ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.click-sheen--light {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.34) 48%,
+    transparent 100%
+  );
+}
+
+.click-sheen--teal {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(45, 212, 191, 0.24) 48%,
+    transparent 100%
+  );
+}
+
+.click-spring-pop {
+  animation: click-spring-bounce 360ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes click-spring-bounce {
+  0% {
+    transform: scale(1);
+  }
+  32% {
+    transform: scale(0.955);
+  }
+  72% {
+    transform: scale(1.015);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes click-sheen-sweep {
+  0% {
+    transform: translateX(-115%) skewX(-18deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateX(125%) skewX(-18deg);
+    opacity: 0;
+  }
+}
+
+@keyframes click-wave-core {
+  0% {
+    transform: scale(0);
+    opacity: 0.95;
+  }
+  55% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.08);
+    opacity: 0;
+  }
+}
+
+@keyframes click-wave-ring-expand {
+  0% {
+    transform: scale(0.06);
+    opacity: 0.9;
+  }
+  60% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
+}
+
+/* Gelombang & Percikan Cahaya Mikro di Titik Sentuh Layar (tetap hidup meski pindah halaman) */
+.tap-burst-root {
+  position: fixed;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.tap-burst-ring {
+  position: absolute;
+  left: -26px;
+  top: -26px;
+  width: 52px;
+  height: 52px;
+  border-radius: 9999px;
+  transform: scale(0.15);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: tap-burst-ring-anim 540ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.tap-burst-ring--delay {
+  animation: tap-burst-ring-anim 620ms cubic-bezier(0.16, 1, 0.3, 1) 90ms forwards;
+}
+
+.tap-burst-ring--light {
+  border: 2px solid rgba(255, 255, 255, 0.78);
+  box-shadow: 0 0 12px rgba(94, 234, 212, 0.55);
+}
+
+.tap-burst-ring--teal {
+  border: 2px solid rgba(15, 118, 110, 0.58);
+  box-shadow: 0 0 12px rgba(45, 212, 191, 0.35);
+}
+
+html.dark .tap-burst-ring--teal {
+  border: 2px solid rgba(94, 234, 212, 0.68);
+  box-shadow: 0 0 14px rgba(94, 234, 212, 0.4);
+}
+
+.tap-burst-spark {
+  position: absolute;
+  left: -3px;
+  top: -3px;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  will-change: transform, opacity;
+  animation: tap-burst-spark-fly 520ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes tap-burst-ring-anim {
+  0% {
+    transform: scale(0.15);
+    opacity: 0.92;
+  }
+  100% {
+    transform: scale(1.65);
+    opacity: 0;
+  }
+}
+
+@keyframes tap-burst-spark-fly {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1.1);
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translate3d(var(--tx), var(--ty), 0) scale(0.15);
+    opacity: 0;
+  }
+}
+
+/* Animasi halus saat modal / dialog muncul */
+[role="dialog"] {
+  animation: modal-fade-in 220ms ease-out;
+}
+
+[role="dialog"] > div {
+  animation: modal-pop-in 260ms cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+@keyframes modal-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================================================
+   MODE MALAM (Deep Forest Night Theme) — Berlaku di Semua Halaman
+   ========================================================= */
+html.dark {
+  color-scheme: dark;
+  background-color: #0d1814;
+  color: #e8f2ec;
+}
+
+html.dark body {
+  background-color: #0d1814;
+  background-image:
+    radial-gradient(circle at 12% 0%, rgba(47, 97, 74, 0.24), transparent 40%),
+    radial-gradient(circle at 88% 8%, rgba(240, 106, 71, 0.11), transparent 34%);
+  color: #e8f2ec;
+}
+
+html.dark .hero-surface {
+  background:
+    radial-gradient(circle at 88% 18%, rgba(240, 106, 71, 0.24), transparent 42%),
+    radial-gradient(circle at 12% 100%, rgba(114, 194, 152, 0.15), transparent 46%),
+    linear-gradient(135deg, #0f2c22 0%, #174032 58%, #1f513f 100%);
+  border: 1px solid rgba(167, 223, 194, 0.14);
+}
+
+html.dark header {
+  background-color: rgba(15, 29, 24, 0.96) !important;
+  border-color: #233b32 !important;
+}
+
+html.dark .sidebar-teal-surface {
+  background:
+    radial-gradient(circle at 85% 6%, rgba(94, 234, 212, 0.16), transparent 42%),
+    linear-gradient(180deg, #0f625c 0%, #0b4c47 52%, #083835 100%) !important;
+  border-color: rgba(153, 246, 228, 0.14) !important;
+  box-shadow: 0 20px 42px -18px rgba(0, 0, 0, 0.65);
+}
+
+html.dark footer {
+  background-color: #09120f !important;
+  border-top: 1px solid #1e332b;
+}
+
+/* Kartu & permukaan terang diubah ke hijau gelap lembut */
+html.dark .logo-pill {
+  background-color: #ffffff !important;
+}
+
+.brochure-sheet,
+html.dark .lector-card,
+html.dark .bg-white,
+html.dark .bg-white\/95 {
+  background-color: #14241e !important;
+  border-color: #243c33 !important;
+  box-shadow: 0 10px 28px -14px rgba(0, 0, 0, 0.55);
+}
+
+html.dark .bg-\[\#FAF7F2\],
+html.dark .bg-\[\#F8FAFC\],
+html.dark .bg-\[\#FAFDFF\],
+html.dark .bg-slate-50,
+html.dark .bg-gray-50 {
+  background-color: #0f1d18 !important;
+}
+
+html.dark .bg-\[\#F4EFE5\],
+html.dark .bg-\[\#EFEAE0\],
+html.dark .bg-\[\#F2EDE3\] {
+  background-color: #192d25 !important;
+}
+
+html.dark .bg-\[\#EBF3EC\] {
+  background-color: #1c382d !important;
+}
+
+html.dark .bg-\[\#FFF7F3\],
+html.dark .bg-\[\#FFFBEB\] {
+  background-color: #262018 !important;
+}
+
+html.dark .bg-\[\#FCEAE3\] {
+  background-color: rgba(240, 106, 71, 0.2) !important;
+}
+
+html.dark .bg-amber-50 {
+  background-color: rgba(217, 119, 6, 0.16) !important;
+  border-color: rgba(245, 158, 11, 0.35) !important;
+  color: #fde68a !important;
+}
+
+html.dark .bg-rose-50,
+html.dark .bg-rose-50\/80 {
+  background-color: rgba(225, 29, 72, 0.16) !important;
+  border-color: rgba(244, 63, 94, 0.35) !important;
+  color: #fda4af !important;
+}
+
+html.dark .bg-emerald-50 {
+  background-color: rgba(16, 185, 129, 0.14) !important;
+  border-color: rgba(52, 211, 153, 0.3) !important;
+  color: #a7f3d0 !important;
+}
+
+html.dark .bg-blue-50\/70 {
+  background-color: rgba(37, 99, 235, 0.16) !important;
+  border-color: rgba(96, 165, 250, 0.35) !important;
+}
+
+html.dark .text-\[\#1E3A8A\] {
+  color: #93c5fd !important;
+}
+
+/* Garis & pembatas */
+html.dark [class*="border-[#EA"],
+html.dark [class*="border-[#E7"],
+html.dark [class*="border-[#EF"],
+html.dark [class*="border-[#ED"],
+html.dark [class*="border-[#E5"],
+html.dark [class*="border-[#EC"],
+html.dark [class*="border-[#DF"],
+html.dark [class*="border-[#D8"],
+html.dark [class*="border-[#DD"],
+html.dark [class*="border-[#CF"],
+html.dark [class*="border-[#CB"],
+html.dark [class*="border-[#D4"],
+html.dark [class*="border-[#E4"],
+html.dark [class*="border-[#E2"],
+html.dark [class*="border-[#DC"],
+html.dark [class*="border-slate-"],
+html.dark [class*="divide-[#"] > :not([hidden]) ~ :not([hidden]) {
+  border-color: #243c33 !important;
+}
+
+/* Warna teks agar kontras & nyaman dibaca di malam hari */
+html.dark .text-\[\#1F513F\],
+html.dark .text-\[\#1F332B\],
+html.dark .text-\[\#213B32\],
+html.dark .text-\[\#183952\],
+html.dark .text-\[\#0F2D44\],
+html.dark .text-slate-900,
+html.dark .text-slate-800 {
+  color: #eaf4ee !important;
+}
+
+html.dark .text-\[\#2F614A\],
+html.dark .text-\[\#2D6A4F\] {
+  color: #7cd4a6 !important;
+}
+
+html.dark .text-\[\#445B51\],
+html.dark .text-\[\#52675E\],
+html.dark .text-\[\#5E7269\],
+html.dark .text-\[\#566B62\],
+html.dark .text-\[\#354E43\],
+html.dark .text-\[\#527187\],
+html.dark .text-\[\#35556D\],
+html.dark .text-\[\#3F5D73\],
+html.dark .text-slate-700,
+html.dark .text-slate-600 {
+  color: #b2c7bc !important;
+}
+
+html.dark .text-\[\#6B7F75\],
+html.dark .text-\[\#7D8F87\],
+html.dark .text-\[\#7B8E85\],
+html.dark .text-\[\#8E9F97\],
+html.dark .text-\[\#68869C\],
+html.dark .text-slate-500,
+html.dark .text-slate-400 {
+  color: #8ba599 !important;
+}
+
+html.dark .text-\[\#D85432\] {
+  color: #ff9c80 !important;
+}
+
+/* Input, select, textarea nyaman dibaca di Mode Malam */
+html.dark input:not([type="checkbox"]):not([type="radio"]),
+html.dark select,
+html.dark textarea {
+  background-color: #10201a !important;
+  color: #edf6f1 !important;
+  border-color: #2b473c !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #6e8a7e !important;
+}
+
+html.dark select option {
+  background-color: #14241e;
+  color: #edf6f1;
+}
+
+/* Bilah pencarian pill di dalam hero agar tetap bersih di Mode Malam */
+html.dark .hero-surface .bg-white {
+  background-color: #10201a !important;
+  border: 1px solid #2a463b;
+}
+
+html.dark .hero-surface .bg-white input,
+html.dark .hero-surface .bg-white select {
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+/* Tabel & baris hover di Mode Malam */
+html.dark tbody tr:hover {
+  background-color: #1a2f27 !important;
+}
+
+html.dark .card-interactive:hover {
+  border-color: #3a6353 !important;
+  box-shadow: 0 16px 32px -14px rgba(0, 0, 0, 0.65);
+}
+
+html.dark .theme-toggle-btn {
+  background-color: #192d25 !important;
+  border-color: #2e4b3f !important;
+  color: #eaf4ee !important;
+}
+
+html.dark .theme-toggle-btn:hover {
+  border-color: #7cd4a6 !important;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #0d1814;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #284237;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #3f6d5a;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button:not(:disabled):active,
+  a:active,
+  .card-interactive:hover {
+    transform: none;
+  }
+  .fade-up,
+  .click-ripple,
+  .click-wave-ring,
+  .click-sheen,
+  .click-spring-pop,
+  .tap-burst-ring,
+  .tap-burst-spark,
+  [role="dialog"],
+  [role="dialog"] > div,
+  [role="dialog"] > aside {
+    animation: none;
+  }
+}

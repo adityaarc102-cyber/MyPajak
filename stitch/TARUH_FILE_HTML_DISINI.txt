@@ -1,0 +1,12 @@
+Taruh file .html hasil export dari Google Stitch ke dalam folder ini.
+Contoh nama file:
+- bayar.html
+- tambah-usaha.html
+- dashboard.html
+- pengingat.html
+- peta.html
+- lapor-pajak.html
+- admin-pajak.html
+- login.html
+
+Setelah disimpan di folder ini, cukup beri tahu di chat agar saya langsung membaca semuanya tanpa terpotong dan menerapkannya ke website MyPajak.
