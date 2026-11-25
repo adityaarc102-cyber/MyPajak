@@ -1,3 +1,5 @@
+import { readCollection, readDocument, writeCollection, writeDocument } from './db'
+
 export interface TaxSettings {
   monthlyTargetAmount: number
   latePenaltyPercentPerMonth: number
@@ -44,12 +46,11 @@ const INITIAL_AUDIT_LOGS: TaxAuditEntry[] = [
 ]
 
 export async function getTaxSettings(): Promise<TaxSettings> {
-  const storage = useStorage('db')
-  const saved = await storage.getItem<TaxSettings>(SETTINGS_KEY)
+  const saved = await readDocument<TaxSettings>(SETTINGS_KEY, DEFAULT_SETTINGS)
   if (saved && typeof saved.monthlyTargetAmount === 'number' && saved.monthlyTargetAmount > 0) {
     return saved
   }
-  await storage.setItem(SETTINGS_KEY, DEFAULT_SETTINGS)
+  await writeDocument(SETTINGS_KEY, DEFAULT_SETTINGS)
   return DEFAULT_SETTINGS
 }
 
@@ -75,20 +76,12 @@ export async function updateTaxSettings(
     updatedAt: new Date().toISOString()
   }
 
-  const storage = useStorage('db')
-  await storage.setItem(SETTINGS_KEY, next)
+  await writeDocument(SETTINGS_KEY, next)
   return next
 }
 
 export async function getTaxAuditLogs(): Promise<TaxAuditEntry[]> {
-  const storage = useStorage('db')
-  const saved = await storage.getItem<TaxAuditEntry[]>(AUDIT_KEY)
-  if (Array.isArray(saved)) {
-    return saved
-  }
-  const seed = JSON.parse(JSON.stringify(INITIAL_AUDIT_LOGS)) as TaxAuditEntry[]
-  await storage.setItem(AUDIT_KEY, seed)
-  return seed
+  return await readCollection<TaxAuditEntry>(AUDIT_KEY, INITIAL_AUDIT_LOGS)
 }
 
 export async function appendTaxAuditLog(entry: Omit<TaxAuditEntry, 'id' | 'createdAt'>): Promise<TaxAuditEntry> {
@@ -103,7 +96,6 @@ export async function appendTaxAuditLog(entry: Omit<TaxAuditEntry, 'id' | 'creat
   }
   logs.unshift(next)
   const trimmed = logs.slice(0, 100)
-  const storage = useStorage('db')
-  await storage.setItem(AUDIT_KEY, trimmed)
+  await writeCollection(AUDIT_KEY, trimmed)
   return next
 }

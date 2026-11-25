@@ -49,12 +49,20 @@ const bytesToHex = (bytes: Uint8Array): string =>
     .join('')
 
 let cachedHmacKey: CryptoKey | null = null
+let cachedSecretValue = ''
+
+const getSessionSecret = (): string => {
+  const rc = useRuntimeConfig()
+  return String(rc.sessionSecret || SESSION_SECRET)
+}
 
 const getHmacKey = async (): Promise<CryptoKey> => {
-  if (cachedHmacKey) return cachedHmacKey
+  const secret = getSessionSecret()
+  if (cachedHmacKey && cachedSecretValue === secret) return cachedHmacKey
+  cachedSecretValue = secret
   cachedHmacKey = await crypto.subtle.importKey(
     'raw',
-    textEncoder.encode(SESSION_SECRET),
+    textEncoder.encode(secret),
     { name: 'HMAC', hash: 'SHA-256' },
     false,
     ['sign']

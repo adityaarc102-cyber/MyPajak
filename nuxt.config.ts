@@ -3,6 +3,15 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
+  runtimeConfig: {
+    tidbHost: '',
+    tidbPort: '4000',
+    tidbUser: '',
+    tidbPassword: '',
+    tidbDatabase: 'mypajak',
+    tidbSsl: 'true',
+    sessionSecret: 'mypajak-local-hmac-secret-2026-v3'
+  },
   app: {
     pageTransition: false,
     layoutTransition: false,

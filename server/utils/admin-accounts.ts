@@ -1,3 +1,5 @@
+import { readCollection, writeCollection } from './db'
+
 export interface AdminAccountPublic {
   id: string
   fullName: string
@@ -84,19 +86,17 @@ async function createSeedAccount(): Promise<AdminAccountStored> {
 }
 
 async function readAccounts(): Promise<AdminAccountStored[]> {
-  const storage = useStorage('db')
-  const saved = await storage.getItem<AdminAccountStored[]>(STORAGE_KEY)
+  const seed = [await createSeedAccount()]
+  const saved = await readCollection<AdminAccountStored>(STORAGE_KEY, seed)
   if (Array.isArray(saved) && saved.length > 0) {
     return saved
   }
-  const seeded = [await createSeedAccount()]
-  await storage.setItem(STORAGE_KEY, seeded)
-  return seeded
+  await writeCollection(STORAGE_KEY, seed)
+  return seed
 }
 
 async function writeAccounts(accounts: AdminAccountStored[]): Promise<void> {
-  const storage = useStorage('db')
-  await storage.setItem(STORAGE_KEY, accounts)
+  await writeCollection(STORAGE_KEY, accounts)
 }
 
 export async function listAdminAccounts(): Promise<AdminAccountPublic[]> {
