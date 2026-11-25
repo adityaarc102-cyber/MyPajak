@@ -13,6 +13,9 @@ node_modules
 logs
 *.log
 
+# Local HTTPS dev certificates
+certs/
+
 # Misc
 .DS_Store
 .env
